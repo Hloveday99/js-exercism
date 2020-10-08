@@ -9,10 +9,10 @@ function randomNumber(min,max) {
 
 function makeName () {
 
-let name = ""
+var name = ""
 let cnt
 //  check name for uniqueness and limit tries to 100
-for (cnt = 0; cnt < 100++) {
+for (cnt = 0; cnt < 100; cnt++) {
 
 // set name to blank
 name = ""
@@ -24,11 +24,18 @@ name += String.fromCharCode(randomNumber(65,90))
 name += String.fromCharCode(randomNumber(65,90))
 
 // get random 3 digit number
-let numbStr = ("000" + randomNumber(1, 999) )
-name += numStr.substr(numStr.length - 3)
+// let numStr = ("000" + Math.floor(randomNumber(1, 999)))
+//impliments the function above into "name"
+// name += numStr.substr(numStr.length - 3)
+for (let digit = 0; digit < 3; digit++) {
+    name += Math.floor(randomNumber(0, 9))
 }
 
-if (usedNames.findIndex(uname => name === uname) !== -1); cnt++)
+
+if (usedNames.findIndex(uname => name === uname) === -1){
+    break
+    }
+}
 
 if (cnt === 100) {
     throw new Error("Max tries exceeded")
@@ -42,7 +49,7 @@ return name
 }
 export class Robot { 
     constructor() {
-        this.name = makeName()
+        this._name = makeName()
     }
 
     get name() {
